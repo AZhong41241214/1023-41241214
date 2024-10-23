@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打磚塊遊戲</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #eee;
+        }
+        canvas {
+            border: 1px solid #000;
+            background: #fff;
+        }
+        #gameOver {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: red;
+        }
+        #restart {
+            display: none;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #difficulty {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        #timeChallenge {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <select id="difficulty">
+        <option value="easy">簡單</option>
+        <option value="medium">中等</option>
+        <option value="hard">困難</option>
+    </select>
+    <input type="checkbox" id="timeChallenge"> 時間挑戰模式
+    <button id="startBtn" onclick="startGame()">開始遊戲</button>
+    <canvas id="gameCanvas" width="480" height="320"></canvas>
+    <div id="gameOver">遊戲結束</div>
+    <div id="restart" onclick="startGame()">重啟遊戲</div>
+    <div>當前分數: <span id="scoreDisplay">0</span></div>
+    <div>生命數: <span id="livesDisplay">3</span></div>
+    <div>剩餘時間: <span id="timeDisplay">60</span> 秒</div>
+    <div>最高分: <span id="highScoreDisplay">0</span></div>
+
+    <!-- 音效 -->
+    <audio id="backgroundMusic" loop>
+        <source src="owo.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hitSound">
+        <source src="oao.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="game.js"></script>
+</body>
+</html>
